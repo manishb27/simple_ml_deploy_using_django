@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Home page</title>
+  </head>
+  <body>
+    <h1>Iris Class prediction</h1>
+    <form action="(% urls 'result' %)">
+      {% csrf_token %}
+      
+      <p>sepal_length:</p>
+      <input type="text" name="sepal_length">
+      <br>
+
+      <p>sepal_width:</p>
+      <input type="text" name="sepal_width">
+      <br>
+
+      <p>petal_length:</p>
+      <input type="text" name="petal_length">
+      <br>
+
+      <p>petal_width:</p>
+      <input type="text" name="petal_width">
+      <br>
+
+      
+
+      <input type="submit" value='Get Predictions'>
+    </form>
+  </body>
+</html>
