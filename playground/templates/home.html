@@ -6,28 +6,31 @@
   </head>
   <body>
     <h1>Iris Class prediction</h1>
-    <form action="(% urls 'result' %)">
+    <form action="{% url 'result' %}">
       {% csrf_token %}
       
       <p>sepal_length:</p>
-      <input type="text" name="sepal_length">
-      <br>
+      <input type="text" required name="sepal_length">
+      <br> <br>
+
 
       <p>sepal_width:</p>
-      <input type="text" name="sepal_width">
-      <br>
+      <input type="text" required  name="sepal_width">
+      <br> <br>
+
 
       <p>petal_length:</p>
-      <input type="text" name="petal_length">
-      <br>
+      <input type="text" required name="petal_length">
+      <br> <br>
+
 
       <p>petal_width:</p>
-      <input type="text" name="petal_width">
-      <br>
+      <input type="text" required  name="petal_width">
+      <br> <br>
 
       
 
-      <input type="submit" value='Get Predictions'>
+      <input type="submit" name = "" value='submit'>
     </form>
   </body>
 </html>

@@ -6,6 +6,6 @@ from . import views
 
 ## urlCONF
 urlpatterns = [
-    path('', views.home , name = 'playground-home'),
-    path('result/', views.result, name = 'result')
+    path('', views.home , name = "home"),
+    path('result/', views.result, name = "result")
 ]

@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+import joblib
 
 
 
@@ -10,16 +11,15 @@ def home(request):
 
 # custom method for generating predictions
 def getPredictions(sepal_length,sepal_width, petal_length, petal_width):
-    import pickle
-    model = pickle.load(open('iris_log_mode', "rb"))
+    model = joblib.load('playground/iris_log_model.sav')
     prediction = model.predict(([[sepal_length,sepal_width, petal_length, petal_width]]))
     
     if prediction == 0:
-        return "not survived"
+        return "Setosa"
     elif prediction == 1:
-        return "survived"
+        return 'Versicolor'
     else:
-        return "error"
+        return 'Virginica'
         
 
 # our result page view
@@ -29,8 +29,13 @@ def result(request):
     petal_length = float(request.GET['petal_length'])
     petal_width = float(request.GET['petal_width'])
     
+    print(sepal_length, sepal_width, petal_length, petal_width)
 
-    result = getPredictions(sepal_length,sepal_width, petal_length, petal_width)
+    ans = getPredictions(sepal_length,sepal_width, petal_length, petal_width)
 
-    return render(request, 'result.html', {'result':result})
+    return render(request, 'result.html', {'ans': ans})
 # Create your views here.
+
+# , {'result':result}
+# def indexed(request):
+#     return render(request, 'index.html' )
